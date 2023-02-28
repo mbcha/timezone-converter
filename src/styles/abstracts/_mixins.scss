@@ -1,0 +1,62 @@
+@mixin subheading {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(56, 53, 64, .6);
+  letter-spacing: .05em;
+}
+
+@mixin input {
+  display: flex;
+  align-items: center;
+  border-radius: $radius;
+  padding: 0 $spacing;
+  color: $color-text;
+  background-color: $color-body-bg;
+  -webkit-appearance: none;
+  transition: border-color .1s ease-out;
+  outline: none;
+  min-height: $input-height;
+  line-height: $input-height;
+
+  &:focus {
+    border-color: $color-main;
+  }
+}
+
+@mixin floating-list {
+  position: absolute;
+  overflow: hidden;
+  top: calc(100% + ($spacing / 2));
+  border-radius: $radius;
+  background: $color-body-bg;
+  box-shadow: $shadow;
+  z-index: 10;
+  min-width: -webkit-fill-available;
+  text-align: left;
+  margin: 0 calc($spacing / 2);
+}
+
+@mixin floating-list-item {
+  display: flex;
+  user-select: none;
+  cursor: pointer;
+  background-color: $color-body-bg;
+  min-width: max-content;
+  width: 100%;
+  outline: none;
+  padding: $spacing;
+
+  &:not(:first-child) {
+    border-top: 1px solid $color-border
+  }
+
+  &:focus {
+    background-color: $color-highlight;
+  }
+}
+
+@mixin scroll-area {
+  max-height: 180px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
