@@ -5,6 +5,7 @@
         v-model="originalTimeZone"
         :options="timeZones"
         :showAllOptions="showAllTimezones"
+        placeholder="Timezone to convert from"
       />
     </div>
     <div :class="$style.timeContainer">
