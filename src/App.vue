@@ -4,6 +4,7 @@
       <Dropdown
         v-model="originalTimeZone"
         :options="timeZones"
+        :showAllOptions="showAllTimezones"
       />
     </div>
     <div :class="$style.timeContainer">
@@ -64,12 +65,16 @@ export default {
       minutesOptions: [...Array(60).keys()].slice(1).map(n => n.toString()),
       newTimeZone: null,
       convertedTime: null,
-      buttonIsClicked: false
+      buttonIsClicked: false,
+      showAllTimezones: true
     }
   },
   watch: {
     newTimeZone() {
       this.buttonIsClicked = false
+    },
+    originalTimeZone() {
+      this.showAllTimezones = false
     }
   },
   computed: {

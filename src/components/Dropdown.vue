@@ -53,6 +53,10 @@ export default defineComponent({
     placeholder: {
       type: String,
       required: false
+    },
+    showAllOptions: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:modelValue'],
@@ -76,7 +80,7 @@ export default defineComponent({
       }
     },
     filteredOptions() {
-      if (this.numbers || this.localValue === '' || this.localValue === null) {
+      if (this.showAllOptions || this.numbers || this.localValue === '' || this.localValue === null) {
         return this.options
       } else {
         const regex = new RegExp(this.localValue, 'gi')

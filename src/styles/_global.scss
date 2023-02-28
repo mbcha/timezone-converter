@@ -28,6 +28,7 @@ body {
   box-sizing: border-box;
   position: relative;
   background-color: $color-body-bg;
+  -webkit-tap-highlight-color: transparent;
 
   @media print {
     height: auto;

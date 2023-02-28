@@ -25,6 +25,5 @@ export default defineComponent({
   color: $color-main;
   cursor: pointer;
   height: $input-height;
-  -webkit-tap-highlight-color: transparent;
 }
 </style>

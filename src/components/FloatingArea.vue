@@ -28,7 +28,6 @@ export default defineComponent({
   &.large {
     width: 95%;
   }
-
 }
 
 .inner {
