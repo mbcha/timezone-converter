@@ -34,16 +34,16 @@
         v-if="buttonIsClicked && !newTimeZone"
         :class="$style.warning"
       >
-        Select timezone to convert to
+        * Select timezone to convert to
       </p>
     </div>
     <Button @click="convertTime">
       Convert
     </Button>
-  </div>
-  <div :class="$style.convertedTimeContainer" v-if="convertedTime">
-    <p>Time in selected timezone:</p>
-    {{ convertedTime }}
+    <div :class="$style.convertedTimeContainer" v-if="convertedTime">
+      <p>Time in selected timezone:</p>
+      {{ convertedTime }}
+    </div>
   </div>
 </template>
 
@@ -97,12 +97,17 @@ export default {
 
 <style module lang="scss">
 .mainContainer {
+  padding-top: $spacing * 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  height: 35%;
+  justify-content: flex-start;
+  height: 100%;
   width: 100%;
+
+  & > * {
+    margin: calc($spacing / 2) 0;
+  }
 }
 
 .originalTimeContainer {
@@ -126,7 +131,7 @@ export default {
 }
 
 .timeDropdown {
-  width: 60px;
+  width: 65px;
   display: flex;
   flex-direction: column;
   align-items: center;

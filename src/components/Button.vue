@@ -25,5 +25,6 @@ export default defineComponent({
   color: $color-main;
   cursor: pointer;
   height: $input-height;
+  font-size: 14px;
 }
 </style>

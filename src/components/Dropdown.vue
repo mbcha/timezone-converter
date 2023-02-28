@@ -118,12 +118,18 @@ export default defineComponent({
     width: 100%;
     border: none;
     text-align: center;
+    font-family: 'Circular Std', sans-serif;
+    font-size: 14px;
 
     &::placeholder {
       color: $color-placeholder-text;
       font-style: italic;
       // safari
       line-height: normal;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
     }
   }
 
