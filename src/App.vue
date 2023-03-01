@@ -27,7 +27,6 @@
     </div>
     <Icon
       :class="$style.icon"
-      v-if="!numbers"
       name="arrows-rotate"
       @click="onClickIcon"
     />
