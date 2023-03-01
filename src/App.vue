@@ -25,22 +25,28 @@
         />
       </div>
     </div>
+    <Icon
+      :class="$style.icon"
+      v-if="!numbers"
+      name="arrows-rotate"
+      @click="onClickIcon"
+    />
     <div :class="$style.zoneContainer">
       <Dropdown
         v-model="newTimeZone"
         :options="timeZones"
         placeholder="Timezone to convert to"
       />
-      <p
-        v-if="buttonIsClicked && !newTimeZone"
-        :class="$style.warning"
-      >
-        * Select timezone to convert to
-      </p>
     </div>
     <Button @click="convertTime">
       Convert
     </Button>
+    <p
+      v-if="buttonIsClicked && (!newTimeZone || !originalTimeZone)"
+      :class="$style.warning"
+    >
+      * Select both time zones
+    </p>
     <div :class="$style.convertedTimeContainer" v-if="convertedTime">
       <p>Time in selected timezone:</p>
       {{ convertedTime }}
@@ -51,11 +57,13 @@
 <script>
 import Dropdown from './components/Dropdown.vue'
 import Button from './components/Button.vue'
+import Icon from './components/Icon.vue'
 
 export default {
   components: {
     Dropdown,
-    Button
+    Button,
+    Icon
   },
   data() {
     return {
@@ -63,7 +71,7 @@ export default {
       originalHour: new Date().getHours(),
       originalMinutes: new Date().getMinutes(),
       hourOptions: [...Array(24).keys()].slice(1).map(n => n.toString()),
-      minutesOptions: [...Array(60).keys()].slice(1).map(n => n.toString()),
+      minutesOptions: [...Array(60).keys()].map(n => n.toString()),
       newTimeZone: null,
       convertedTime: null,
       buttonIsClicked: false,
@@ -90,6 +98,11 @@ export default {
         const originalDateTime = this.$dayjs.tz(`${this.originalHour}:${this.originalMinutes}`, 'HH:mm', this.originalTimeZone)
         this.convertedTime = originalDateTime.tz(this.newTimeZone).format('HH:mm')
       }
+    },
+    onClickIcon() {
+      const currentOriginalTimezone = this.originalTimeZone
+      this.originalTimeZone = this.newTimeZone
+      this.newTimeZone = currentOriginalTimezone
     }
   }
 }
@@ -149,5 +162,9 @@ export default {
 
 .warning {
   color: $red;
+}
+
+.icon {
+  cursor: pointer;
 }
 </style>
